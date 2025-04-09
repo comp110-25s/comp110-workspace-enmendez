@@ -105,3 +105,6 @@ class River:
             if len(self.fish) > 0:
                 # Removes the first item in the list "fish at the front"
                 self.fish.pop(0)
+
+
+# hi
