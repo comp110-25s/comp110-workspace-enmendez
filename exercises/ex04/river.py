@@ -1,5 +1,7 @@
 """File to define River class."""
 
+__author__ = "730751590"
+
 from exercises.ex04.fish import Fish
 from exercises.ex04.bear import Bear
 
@@ -21,6 +23,7 @@ class River:
             self.bears.append(Bear())
 
     def check_ages(self):
+        """A bear is removed after a specific age from the river"""
         surviving_fish: list[Fish] = []
         surviving_bears: list[Bear] = []
         for fish in self.fish:
@@ -33,12 +36,14 @@ class River:
             self.bears = surviving_bears
 
     def bears_eating(self):
+        """Determines amount of fish for the bear to eat"""
         for bear in self.bears:
             if len(self.fish) >= 5:
                 self.remove_fish(3)
                 bear.eat(3)
 
     def check_hunger(self):
+        """If the hunger_score = 0, a bear is removed from the population"""
         surviving_bears: list[Bear] = []
         for bear in self.bears:
             if bear.hunger_score >= 0:
@@ -46,12 +51,14 @@ class River:
             self.bears = surviving_bears
 
     def repopulate_fish(self):
+        """Each pair should produce 4 offspring"""
         num_fish = len(self.fish)
         num_new_fish = (num_fish // 2) * 4
         for _ in range(num_new_fish):
             self.fish.append(Fish())
 
     def repopulate_bears(self):
+        """Each pair should produce 1 offspring"""
         num_bears = len(self.bears)
         num_new_bears = num_bears // 2
         for _ in range(num_new_bears):
@@ -86,10 +93,12 @@ class River:
         self.view_river()
 
     def one_river_week(self) -> None:
+        """Calls the method 7 times"""
         for _ in range(7):
             self.one_river_day()
 
     def remove_fish(self, amount: int) -> None:
+        """Removes the first fish in the list [frontmost fish]"""
         # Iterates through 'amount' of times
         for _ in range(amount):
             # Checks the length of the list and loops through each item
